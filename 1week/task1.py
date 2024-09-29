@@ -11,16 +11,14 @@ class Solution(object):
         maxLen = 0
 
         for i, letter in enumerate(s):
-            
-            if(letter in lettersIndexSet):
-                for l in s[i-curLen : lettersIndexSet[letter]]:
-                    del lettersIndexSet[l]
+            if letter in lettersIndexSet:
+                for length in s[i - curLen : lettersIndexSet[letter]]:
+                    del lettersIndexSet[length]
                 curLen = i - lettersIndexSet[letter]
             else:
-                curLen+=1
+                curLen += 1
                 maxLen = max(curLen, maxLen)
 
             lettersIndexSet[letter] = i
 
         return maxLen
-        

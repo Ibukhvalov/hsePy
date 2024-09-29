@@ -8,6 +8,7 @@ class Solution:
 
     def generateParenthesis(self, n: int) -> list[str]:
         ans = []
+
         def generateWays(path: str, v: int):
             if v < n:
                 return

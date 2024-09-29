@@ -3,7 +3,6 @@ leetcode.com/problem-list/string/
 https://leetcode.com/problems/design-add-and-search-words-data-structure/description/
 """
 
-
 from string import ascii_lowercase
 
 
@@ -16,12 +15,12 @@ class WordDictionary:
         self.words.add(word)
 
     def search(self, word: str) -> bool:
-        if ('.' in word):
+        if "." in word:
             for c in ascii_lowercase:
-                wordFixed = word.replace('.', c, 1)
-                if ('.' in wordFixed):
+                wordFixed = word.replace(".", c, 1)
+                if "." in wordFixed:
                     for d in ascii_lowercase:
-                        if (wordFixed.replace('.', d) in self.words):
+                        if wordFixed.replace(".", d) in self.words:
                             return True
                 else:
                     if wordFixed in self.words:
