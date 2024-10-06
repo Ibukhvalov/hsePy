@@ -1,28 +1,29 @@
 """
 leetcode.com/problem-list/string/
-https://leetcode.com/problems/design-add-and-search-words-data-structure/description/
+url: https://leetcode.com/problems/longest-palindromic-substring/description/
 """
 
-from string import ascii_lowercase
 
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        ans = ""
+        for i in range(len(s)):
+            j = 0
+            while (
+                i - j - 1 >= 0 and i + j + 1 < len(s) and s[i - j - 1] == s[i + j + 1]
+            ):
+                j += 1
+            if 2 * j + 1 > len(ans):
+                ans = s[i - j : i + j + 1]
+            if i < len(s) - 1 and s[i] == s[i + 1]:
+                j = 0
+                while (
+                    i - (j + 1) >= 0
+                    and i + 2 + j < len(s)
+                    and s[i - j - 1] == s[i + 2 + j]
+                ):
+                    j += 1
+                if j * 2 + 2 > len(ans):
+                    ans = s[i - j : i + 1 + j + 1]
 
-class WordDictionary:
-
-    def __init__(self):
-        self.words = set()
-
-    def addWord(self, word: str) -> None:
-        self.words.add(word)
-
-    def search(self, word: str) -> bool:
-        if "." in word:
-            for c in ascii_lowercase:
-                wordFixed = word.replace(".", c, 1)
-                if "." in wordFixed:
-                    for d in ascii_lowercase:
-                        if wordFixed.replace(".", d) in self.words:
-                            return True
-                else:
-                    if wordFixed in self.words:
-                        return True
-        return word in self.words
+        return ans

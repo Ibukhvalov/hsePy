@@ -1,6 +1,6 @@
 """
 leetcode.com/problem-list/string/
-https://leetcode.com/problems/decode-ways/description/
+url: https://leetcode.com/problems/decode-ways/description/
 """
 
 

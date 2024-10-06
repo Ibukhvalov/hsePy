@@ -1,6 +1,6 @@
 """
 leetcode.com/problem-list/string/
-url: https://leetcode.com/problems/word-pattern/description/
+url: https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 """
 
 
