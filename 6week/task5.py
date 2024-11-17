@@ -1,0 +1,28 @@
+"""
+leetcode.com/problem-list/sliding-window/
+url: https://leetcode.com/problems/maximum-sum-of-almost-unique-subarray/description/
+"""
+
+import collections
+
+
+class Solution:
+    def maxSum(self, nums: list[int], m: int, k: int) -> int:
+        seen = collections.defaultdict(int)
+        s = 0
+        res = 0
+        for i in range(k):
+            s += nums[i]
+            seen[nums[i]] += 1
+        if len(seen) >= m:
+            res = s
+        for i in range(k, len(nums)):
+            s += nums[i]
+            s -= nums[i - k]
+            seen[nums[i]] += 1
+            seen[nums[i - k]] -= 1
+            if seen[nums[i - k]] == 0:
+                del seen[nums[i - k]]
+            if len(seen) >= m:
+                res = max(res, s)
+        return res
